@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar.jsx";
 import Home from "./pages/Home.jsx";
 import CookedGame from "./pages/CookedGame.jsx";
 import Results from "./pages/Results.jsx";
+import CatPersonality from "./pages/CatPersonality.jsx";
 import { questions } from "./data/questions.js";
 
 function shuffle(items) {
@@ -43,9 +44,10 @@ export default function App() {
       <div className="ambient ambient-left" aria-hidden="true" />
       <div className="ambient ambient-right" aria-hidden="true" />
       <Navbar />
-      {screen === "home" && <Home onStart={startGame} />}
+      {screen === "home" && <Home onStart={startGame} onCat={() => setScreen("cat")} />}
       {screen === "quiz" && <CookedGame questions={gameQuestions} onComplete={finishGame} />}
       {screen === "results" && <Results name={playerName} answers={answers} onReplay={replay} />}
+      {screen === "cat" && <CatPersonality onHome={() => setScreen("home")} />}
       <footer className="site-footer">
         <span>THE FUNNY LAB © 2025</span>
         <span>MADE FOR THE CHRONICALLY ONLINE <span aria-hidden="true">♥</span></span>
